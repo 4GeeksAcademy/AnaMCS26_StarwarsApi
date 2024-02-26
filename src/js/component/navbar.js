@@ -2,9 +2,13 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import React, { useContext } from "react";
 
-
 export const Navbar = () => {
     const { store, actions } = useContext(Context);
+
+    const handleDeleteFavorite = (index) => {
+        actions.deleteFavorite(index);
+    };
+
     return (
         <div className="container">
             <nav className="navbar navbar-expand-lg">
@@ -27,7 +31,12 @@ export const Navbar = () => {
                         </div>
                         <div className="modal-body">
                             <ul>
-                                {store.myFavs.map((item) => <li key={item.uid}>{item}</li>)}
+                                {store.myFavs.map((item, index) => (
+                                    <li key={item.uid}>
+                                        {item}
+                                        <button onClick={() => handleDeleteFavorite(index)}>Eliminar</button>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                         <div className="modal-footer">
