@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
-import { Context } from "../store/appContext";
 import React, { useContext } from "react";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
     const { store, actions } = useContext(Context);
 
+    // Function to handle deleting a favorite
     const handleDeleteFavorite = (index) => {
+        // Call the deleteFavorite action from the context with the index of the favorite to delete
         actions.deleteFavorite(index);
     };
 
@@ -22,6 +23,7 @@ export const Navbar = () => {
                 </div>
             </nav>
 
+            {/* Modal for displaying favorites */}
             <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
@@ -31,9 +33,12 @@ export const Navbar = () => {
                         </div>
                         <div className="modal-body">
                             <ul>
+                                {/* Map through each favorite item in the store and render it */}
                                 {store.myFavs.map((item, index) => (
                                     <li key={item.uid}>
+                                        {/* Render the favorite item */}
                                         {item}
+                                        {/* Button to delete the favorite */}
                                         <button onClick={() => handleDeleteFavorite(index)}>Eliminar</button>
                                     </li>
                                 ))}
