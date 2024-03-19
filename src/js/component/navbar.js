@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
+import logoStarWars from "../../img/star-wars-logo.png.png";
+
 
 export const Navbar = () => {
     const { store, actions } = useContext(Context);
@@ -14,7 +16,7 @@ export const Navbar = () => {
         <div className="container">
             <nav className="navbar navbar-expand-lg">
                 <a className="navbar-brand" href="#">
-                    <img src="https://cdn.discordapp.com/attachments/1163524764309147730/1202294564715761756/starwars.png?ex=65ccef11&is=65ba7a11&hm=ebb4130784a8ef6bb07ebe385377f018456cc4875fe046788f61be95f258c615&" width="60" height="60" alt="Icono" />
+                <img src={logoStarWars}  width="50" height="30" alt="Icono" />
                 </a>
                 <div className="ms-auto">
                     <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -39,7 +41,7 @@ export const Navbar = () => {
                                         {/* Render the favorite item */}
                                         {item}
                                         {/* Button to delete the favorite */}
-                                        <button onClick={() => handleDeleteFavorite(index)}>Eliminar</button>
+                                        <button onClick={() => handleDeleteFavorite(index)}>X</button>
                                     </li>
                                 ))}
                             </ul>

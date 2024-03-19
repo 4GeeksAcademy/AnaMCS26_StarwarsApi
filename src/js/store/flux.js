@@ -45,16 +45,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 						 setStore({myFavs: [...store.myFavs, favName]});
 						}
 			},
-
 			deleteFavorite: (index) => {
-				const { favorites } = getStore();
-				const updatedFavorites = [...favorites];
+				const store = getStore();
+				const updatedFavorites = [...store.myFavs];
 				updatedFavorites.splice(index, 1);
-				setStore({ favorites: updatedFavorites });
+				setStore({ myFavs: updatedFavorites });
 				localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-			},
+			  },
 			
-	
+
 			corazonColor: (name) => {
 				const store = getStore();
 				return store.myFavs.includes(name);

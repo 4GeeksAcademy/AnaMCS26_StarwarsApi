@@ -22,8 +22,6 @@ const injectContext = PassedComponent => {
 			state.actions.peopleData()
 			state.actions.planetsData()
 			state.actions.starshipsData()
-			state.actions.addFavorites();
-			state.actions.deleteFavorites();
 		}, []);
 
 		return (
